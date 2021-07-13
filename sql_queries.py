@@ -35,7 +35,7 @@ song_table_create = (""" CREATE TABLE songs(\
                         );""")
 
 artist_table_create = (""" CREATE TABLE artists(\
-                            artist_id VARCHAR,\
+                            artist_id VARCHAR PRIMARY KEY,\
                             name VARCHAR,\
                             location VARCHAR,\
                             latitude FLOAT,\
