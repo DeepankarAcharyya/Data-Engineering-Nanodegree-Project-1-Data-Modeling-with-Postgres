@@ -8,6 +8,10 @@ from sql_queries import *
 def process_song_file(cur, filepath):
     """
     The function processes the song data JSON files and loads the data into the songs and artists tables.
+    
+    Arguments:
+    cur          : the database connection cursor object
+    filepath     : the filepath to the JSON file
     """
     
     # open song file
@@ -24,6 +28,9 @@ def process_song_file(cur, filepath):
 def extract_time_data(d):
     """ 
     The function extracts the hour, year, month, week of the year, day, day of the week from the timestamp data and return the required data in the form of a list.
+    
+    Argument:
+    d : datetime data 
     """
     hour = d.hour
     year = d.year
@@ -38,6 +45,10 @@ def extract_time_data(d):
 def process_log_file(cur, filepath):
     """
     The function processes the log data JSON files and loads the relevant data into the following tables : songplays, users and time.
+    
+    Arguments:
+    cur        : the database connection cursor object
+    filepath   : the filepath to the JSON file
     """
     # open log file
     df = pd.read_json(filepath, lines = True)
@@ -86,6 +97,12 @@ def process_data(cur, conn, filepath, func):
     """
     The function lists out the JSON files and passes the files to the respective functions. 
     The data from the JSON files will be processed and the relevant data will be loaded into the database tables.
+    
+    Arguments:
+    conn      : the database connection object
+    cur       : the database connection cursor object
+    filepath  : the filepath for the JSON files
+    func      : the function to handle (process and load into the database tables) the JSON file data
     """
     # get all files matching extension from directory
     all_files = []
